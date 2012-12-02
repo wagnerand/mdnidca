@@ -1,0 +1,28 @@
+.topspace {
+	margin-top: 1em;
+}
+
+.loading {
+	background: url(img/loading.gif) no-repeat center center;
+}
+
+.found {
+	background: url(img/yes.png) no-repeat center center;
+}
+
+.missing {
+	background: url(img/no.png) no-repeat center center;
+}
+
+.odd {
+	background-color: #eeeeee;
+}
+
+.even {
+	background-color: #ffffff;
+}
+
+.actionItem {
+	margin-left: 0.25em;
+	margin-right: 0.25em;
+}

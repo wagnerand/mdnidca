@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="rdf:#$UwteT2"
+                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   em:minVersion="17.0"
+                   em:maxVersion="19.*" />
+  <Description RDF:about="rdf:#$c0HYx"
+                   em:locale="de-DE"
+                   em:name="MDN IDCA"
+                   em:description="MDN Interface Documentation Coverage Analyzer"
+                   em:creator="Andreas Wagner" />
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="mdnidca@andreaswagner.org"
+                   em:type="2"
+                   em:version="0.1"
+                   em:name="MDN IDCA"
+                   em:description="MDN Interface Documentation Coverage Analyzer"
+                   em:creator="Andreas Wagner"
+                   em:updateURL="https://raw.github.com/wagnerand/mdnidca/master/dist/update.rdf">
+    <em:targetApplication RDF:resource="rdf:#$UwteT2"/>
+    <em:localized RDF:resource="rdf:#$c0HYx"/>
+  </RDF:Description>
+</RDF:RDF>

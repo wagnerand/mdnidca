@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+ <html>
+ 	<head>
+        <meta charset="UTF-8">
+ 	    <title></title>
+ 	    <script type="application/x-javascript" src="mdnidca.js"></script>
+        <link rel="stylesheet" type="text/css" href="mdnidca.css">
+    </head>
+    <body>
+        <h1>MDN Interface Documentation Coverage Analzyer</h1>
+        <p>This page shows you where your help on documenting interfaces is needed.<p>
+    	<div>
+	    	<form action="#">
+	    		1. <input type="button" name="fetchFromMXR" value="Fetch Interfaces from MXR" onclick="mdnidca.fetchFromMXR();">
+                    <span><img id="fetchStatusImage" src=""></span><br>
+	    		2. <input type="button" name="checkOnMDN" value="Check for Interfaces on MDN" onclick="mdnidca.checkOnMDN();">
+                    <span><img id="checkStatusImage" src=""></span><br>
+                3. <input type="button" name="document" value="Start documenting" onclick="alert('What about YOU doing this step for me? :)');">
+	    	</form>
+    	</div>
+    	<div class="topspace">
+            Total interfaces on MXR: <span id="total">?</span><br>
+            Found documentations on MDN: <span id="one">?</span><br>
+            Missing documentations on MDN: <span id="zero">?</span>
+        </div>
+	   	<div class="topspace">
+    		<table id="tableList">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Interface</th>
+                        <th>Actions</tH>
+                    </tr>
+                </thead>
+            </table>
+    	</div>
+    </body>
+</html>
