@@ -42,6 +42,11 @@ if (!mdnidca) {
                                 name : result[0].substring(idxStart + 1, idxEnd),
                                 path : result[0]
                             }
+
+							if (interfacee.path.search(/\/tests{0,1}\//) > -1) {
+								continue;
+							}
+
                             mdnidca.interfacesList.push(interfacee);
 
                             // status column
@@ -105,13 +110,21 @@ if (!mdnidca) {
                 statusImage.classList.add("loading");
 
                 var req = new XMLHttpRequest();
-                var baseUrl;
-                if (interfacee.path.indexOf("/dom/") > -1) {
-                    baseUrl = "https://developer.mozilla.org/en/DOM/"
+                var lookupUrl;
+				if (interfacee.name.search(/^nsIDOMSVG.*Element$/i) == 0) {
+					lookupUrl = "https://developer.mozilla.org/en-US/docs/SVG/Element/" + interfacee.name.match(/(?:nsIDOM)(.*)(?:Element$)/i,'')[1];
+				} else if (interfacee.name.search(/^nsIDOM/i) == 0) {
+					lookupUrl = "https://developer.mozilla.org/en-US/docs/DOM/" + interfacee.name.replace(/^nsIDOM/i,'');
+				} else if (interfacee.path.search("/dom/") > -1) {
+                    lookupUrl = "https://developer.mozilla.org/en-US/docs/DOM/" + interfacee.name;
+				} else if (interfacee.name.search(/^extI/i) == 0) {
+					lookupUrl = "https://developer.mozilla.org/en-US/docs/Toolkit_API/" + interfacee.name;
+				} else if (interfacee.name.search(/^fuelI/i) == 0) {
+					lookupUrl = "https://developer.mozilla.org/en-US/docs/Toolkit_API/FUEL/" + interfacee.name;
                 } else {
-                    baseUrl = "https://developer.mozilla.org/en/XPCOM_Interface_Reference/";
+                    lookupUrl = "https://developer.mozilla.org/en-US/docs/XPCOM_Interface_Reference/" + interfacee.name;
                 }
-                req.open("HEAD", baseUrl + interfacee.name + "?redirect=no");
+                req.open("HEAD", lookupUrl + "$json");
                 //req.channel.loadFlags |= Components.interfaces.nsIRequest.LOAD_BYPASS_CACHE;
                 req.onreadystatechange = function() {
 
@@ -119,7 +132,7 @@ if (!mdnidca) {
                         statusImage.classList.remove("loading");
 
                         var linkMDN = document.createElement("a");
-                        linkMDN.href = baseUrl + interfacee.name;
+                        linkMDN.href = lookupUrl;
                         linkMDN.textContent = "[MDN]";
                         linkMDN.setAttribute("title", interfacee.name);
                         linkMDN.target = "_blank";
@@ -136,7 +149,7 @@ if (!mdnidca) {
                             statusImage.classList.add("found");
                             document.getElementById("one").textContent = one;
                         } else {
-                            unkown++;
+                            unknown++;
                         }
                         document.getElementById("colAction_" + interfacee.path).appendChild(linkMDN);
 
